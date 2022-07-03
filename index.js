@@ -20,7 +20,7 @@ const typeDefs = gql`
   type Mutation {
     addBook(id: Int, title: String, author: String): Book
     editBook(id: Int, title: String, author: String): Book
-    deletePost(id: ID!): Book
+    deletebook(id: ID!): Book
   }
 `;
 
@@ -42,6 +42,50 @@ const books = [
 const resolvers = {
   Query: {
     books: () => books,
+  },
+  Mutation: {
+    /**Create book Function */
+    createbook: (_, { title, text }) => {
+      let newbook = {
+        id: Math.floor(Math.random() * 100 + 1).toString(),
+        title: title,
+        text: text,
+      };
+      books.push(newbook);
+      return newbook;
+    },
+    /**Update book Function */
+    updatebook: (_, { id, title, text }) => {
+      let bookToBeUpdatedIndex = books.findIndex((book) => book.id === id);
+      let booksUpdates = { id: id, title: title, text: text };
+      if (bookToBeUpdatedIndex === -1) {
+        return "There is no book available to update";
+      }
+      books[bookToBeUpdatedIndex] = booksUpdates;
+      return "Update Successfully";
+    },
+    /**Delete book Function */
+    deletebook: (_, { id }) => {
+      let booksAfterDeleteing = books.filter((book) => book.id !== id);
+      let bookToBeDeletedIndex = books.findIndex((book) => book.id === id);
+      if (bookToBeDeletedIndex === -1) {
+        return "There is no book available to delete";
+      }
+      books = booksAfterDeleteing;
+      return "Deleted Successfully";
+    },
+    /**Add comment to certain book */
+    addComment: (_, { bookId, name, content }) => {
+      let bookToBeCommentedIndex = books.findIndex(
+        (book) => book.id === bookId
+      );
+      let comment = { name, content };
+      if (bookToBeCommentedIndex === -1) {
+        return "There is no book available to add comment";
+      }
+      books[bookToBeCommentedIndex].comments.push(comment);
+      return "Comment Added Successfully";
+    },
   },
 };
 
