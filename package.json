@@ -1,0 +1,24 @@
+{
+  "name": "iti-graphql",
+  "version": "1.0.0",
+  "description": "graph ql lab",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Omar-Abd-El-Shafy/ITI-GraphQl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Omar-Abd-El-Shafy/ITI-GraphQl/issues"
+  },
+  "homepage": "https://github.com/Omar-Abd-El-Shafy/ITI-GraphQl#readme",
+  "dependencies": {
+    "apollo-server": "^3.9.0",
+    "graphql": "^16.5.0"
+  }
+}
