@@ -5,7 +5,7 @@ const { ApolloServer, gql } = require("apollo-server");
 // your data.
 const typeDefs = gql`
   type Book {
-    id: Int
+    id: String
     title: String
     author: String
   }
@@ -18,9 +18,9 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addBook(id: Int, title: String, author: String): Book
-    editBook(id: Int, title: String, author: String): Book
-    deletebook(id: ID!): Book
+    createBook(title: String, text: String): Book # The : indicate the return type of thsi function
+    updateBook(id: String, title: String, text: String): String
+    deleteBook(id: String): String
   }
 `;
 
@@ -45,19 +45,19 @@ const resolvers = {
   },
   Mutation: {
     /**Create book Function */
-    createbook: (_, { title, text }) => {
+    createbook: (_, { title, author }) => {
       let newbook = {
         id: Math.floor(Math.random() * 100 + 1).toString(),
         title: title,
-        text: text,
+        author: author,
       };
       books.push(newbook);
       return newbook;
     },
     /**Update book Function */
-    updatebook: (_, { id, title, text }) => {
+    updatebook: (_, { id, title, author }) => {
       let bookToBeUpdatedIndex = books.findIndex((book) => book.id === id);
-      let booksUpdates = { id: id, title: title, text: text };
+      let booksUpdates = { id: id, title: title, author: author };
       if (bookToBeUpdatedIndex === -1) {
         return "There is no book available to update";
       }
