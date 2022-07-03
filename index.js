@@ -75,17 +75,7 @@ const resolvers = {
       return "Deleted Successfully";
     },
     /**Add comment to certain book */
-    addComment: (_, { bookId, name, content }) => {
-      let bookToBeCommentedIndex = books.findIndex(
-        (book) => book.id === bookId
-      );
-      let comment = { name, content };
-      if (bookToBeCommentedIndex === -1) {
-        return "There is no book available to add comment";
-      }
-      books[bookToBeCommentedIndex].comments.push(comment);
-      return "Comment Added Successfully";
-    },
+
   },
 };
 
