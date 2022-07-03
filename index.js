@@ -5,6 +5,7 @@ const { ApolloServer, gql } = require("apollo-server");
 // your data.
 const typeDefs = gql`
   type Book {
+    id: Int
     title: String
     author: String
   }
@@ -15,14 +16,22 @@ const typeDefs = gql`
   type Query {
     books: [Book]
   }
+
+  type Mutation {
+    addBook(id: Int, title: String, author: String): Book
+    editBook(id: Int, title: String, author: String)
+    deletePost(id: ID!): DeleteResponse
+  }
 `;
 
 const books = [
   {
+    id: 1,
     title: "The Awakening",
     author: "Kate Chopin",
   },
   {
+    id: 2,
     title: "City of Glass",
     author: "Paul Auster",
   },
@@ -47,5 +56,5 @@ const server = new ApolloServer({
 
 // The `listen` method launches a web server.
 server.listen().then(({ url }) => {
-    console.log(`🚀  Server ready at ${url}`);
-  });
+  console.log(`🚀  Server ready at ${url}`);
+});
