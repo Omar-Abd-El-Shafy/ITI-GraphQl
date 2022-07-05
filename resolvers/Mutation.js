@@ -1,6 +1,8 @@
 const { v4: uuid } = require("uuid");
 exports.Mutation = {
   addCategory: (_, input, context) => {
+    console.log(input)
+
     return context.dataSources.category.create(input);
   },
   //   addCategory: (parent, { input }, { categories }) => {
