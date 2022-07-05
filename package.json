@@ -4,6 +4,8 @@
   "description": "graph ql lab",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon app.js",
+    "start-server": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +21,11 @@
   "homepage": "https://github.com/Omar-Abd-El-Shafy/ITI-GraphQl#readme",
   "dependencies": {
     "apollo-server": "^3.9.0",
-    "graphql": "^16.5.0"
+    "graphql": "^16.5.0",
+    "mongoose": "^6.4.2",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
   }
 }
