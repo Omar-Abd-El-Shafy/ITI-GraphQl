@@ -2,8 +2,9 @@ const { ApolloServer } = require("apollo-server");
 const mongoose = require("mongoose");
 mongoose
   .connect(
-    `mongodb+srv://admin123:Amazon-Clone-Admin@amazon-clone.ob6xs.mongodb.net/?retryWrites=true&w=majority`
+    `mongodb+srv://${process.env.mongoUserName}:${process.env.mongoUserPassword}@amazon-clone.ob6xs.mongodb.net/?retryWrites=true&w=majority`
   )
+
   .then(() => {
     console.log("MongoDB connected successfully");
   });
@@ -27,7 +28,7 @@ const server = new ApolloServer({
   resolvers: { Query, Category, Mutation },
   dataSources: () => ({
     category: new CategoryDataSource(),
-  }),  
+  }),
 });
 
 // The `listen` method launches a web server.

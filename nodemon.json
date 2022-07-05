@@ -1,6 +1,6 @@
 {
     "env": {
-        "mongoDatabase": "Amazon-Clone",
+        "mongoDatabase": "amazon-clone",
         "mongoUserName": "admin123",
         "mongoUserPassword": "Amazon-Clone-Admin"
     }
