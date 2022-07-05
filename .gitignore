@@ -1,5 +1,3 @@
-#remove nodemon.json
-./nodemon.json
 
 # Logs
 logs
@@ -132,3 +130,4 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+nodemon.json
